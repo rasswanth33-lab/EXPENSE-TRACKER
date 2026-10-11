@@ -1,0 +1,10 @@
+Total amount spent: 2510.00
+
+Spending by category:
+Food: 430.00
+Travel: 820.00
+Shopping: 60.00
+Bills: 1200.00
+
+Highest expense: Electricity bill - 1200.00
+Number of expenses: 6

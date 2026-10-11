@@ -1,0 +1,631 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* 1. Visual Direction Tokens */
+    --bg-page: #F7F8F6;
+    --card-bg: #FFFFFF;
+    --text-primary: #202824;
+    --text-secondary: #7B847F;
+    --border-color: #E8ECE9;
+    --border-hover: #D0D7D2;
+    
+    --primary: #16845B;
+    --primary-hover: #116B4A;
+    --primary-subtle: #E8F5EE;
+    --primary-border: #C8E3D4;
+    
+    --danger: #D9383A;
+    --danger-subtle: #FDF2F2;
+    --danger-border: #F8D2D2;
+    --danger-hover: #B82527;
+    
+    /* Category Colors: Emerald, Muted Amber, Slate, Soft Violet, Muted Coral */
+    --cat-food: #D97706;      /* Muted Amber */
+    --cat-food-bg: #FFFBEB;
+    --cat-food-border: #FDE68A;
+
+    --cat-travel: #475569;    /* Slate */
+    --cat-travel-bg: #F1F5F9;
+    --cat-travel-border: #CBD5E1;
+
+    --cat-shopping: #7C3AED;  /* Soft Violet */
+    --cat-shopping-bg: #F5F3FF;
+    --cat-shopping-border: #DDD6FE;
+
+    --cat-bills: #DC2626;     /* Muted Coral / Red */
+    --cat-bills-bg: #FEF2F2;
+    --cat-bills-border: #FECACA;
+
+    --cat-other: #16845B;     /* Emerald Green */
+    --cat-other-bg: #E8F5EE;
+    --cat-other-border: #C8E3D4;
+
+    /* Spacing & Radii (8px grid) */
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --radius-sm: 6px;
+    --radius-full: 9999px;
+
+    /* Elevation */
+    --shadow-card: 0 1px 3px rgba(32, 40, 36, 0.04), 0 1px 2px rgba(32, 40, 36, 0.02);
+    --shadow-elevated: 0 4px 12px rgba(32, 40, 36, 0.06);
+
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font);
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 40px 24px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 2. Header and Navigation */
+header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    box-shadow: var(--shadow-card);
+    flex-shrink: 0;
+}
+
+.header-icon {
+    width: 22px;
+    height: 22px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+/* 3. Spending Summary Card */
+.summary-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary);
+    padding: 24px 28px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-card);
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.summary-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.summary-count-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    background-color: var(--primary-subtle);
+    border: 1px solid var(--primary-border);
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+}
+
+.summary-card h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 6px;
+}
+
+.summary-context {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* Card Containers Common Styling */
+.analytics-card,
+.form-section,
+.expenses-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-card);
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2,
+.expenses-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+/* 4. Circular Spending Analytics */
+.analytics-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+}
+
+.chart-wrapper {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donut-chart-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.donut-track {
+    fill: none;
+    stroke: #F4F6F4;
+    stroke-width: 20;
+}
+
+.donut-segment {
+    fill: none;
+    stroke-width: 20;
+    stroke-linecap: butt;
+    transition: stroke-dasharray 0.4s ease, stroke-dashoffset 0.4s ease, stroke-width 0.15s ease, opacity 0.15s ease;
+}
+
+.donut-segment:hover {
+    stroke-width: 23;
+    cursor: pointer;
+    opacity: 0.92;
+}
+
+.chart-center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-center-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.chart-center-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 2px;
+    letter-spacing: -0.02em;
+}
+
+/* Neatly Aligned Legend */
+.legend-wrapper {
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+.analytics-legend {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    background-color: #FAFBFA;
+    border: 1px solid var(--border-color);
+    font-size: 13px;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.legend-item:hover {
+    background-color: #F2F5F3;
+    border-color: var(--border-hover);
+}
+
+.legend-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-category-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.legend-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.legend-amount {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.legend-percentage {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-width: 48px;
+    text-align: right;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.chart-empty-message {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 24px 0;
+    font-size: 14px;
+    display: none;
+}
+
+/* 5. Add Expense Form */
+#expenseForm {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+input,
+select {
+    width: 100%;
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    color: var(--text-primary);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input::placeholder {
+    color: #9BA49F;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(22, 132, 91, 0.14);
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+button[type="submit"] {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    height: 42px;
+    padding: 0 24px;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    box-shadow: 0 1px 2px rgba(22, 132, 91, 0.2);
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.99);
+}
+
+.error-message {
+    grid-column: 1 / -1;
+    color: var(--danger);
+    background-color: var(--danger-subtle);
+    border: 1px solid var(--danger-border);
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 500;
+    display: none;
+}
+
+.error-message:not(:empty) {
+    display: block;
+}
+
+/* 6. Recent Transactions Table */
+.table-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.table-heading h2 {
+    margin-bottom: 0;
+}
+
+.table-heading select {
+    width: auto;
+    min-width: 170px;
+    height: 38px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+th,
+td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #F8FAF8;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+    background-color: #F9FAF9;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Category Badges */
+.badge-category {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.badge-food {
+    background-color: var(--cat-food-bg);
+    color: var(--cat-food);
+    border: 1px solid var(--cat-food-border);
+}
+
+.badge-travel {
+    background-color: var(--cat-travel-bg);
+    color: var(--cat-travel);
+    border: 1px solid var(--cat-travel-border);
+}
+
+.badge-shopping {
+    background-color: var(--cat-shopping-bg);
+    color: var(--cat-shopping);
+    border: 1px solid var(--cat-shopping-border);
+}
+
+.badge-bills {
+    background-color: var(--cat-bills-bg);
+    color: var(--cat-bills);
+    border: 1px solid var(--cat-bills-border);
+}
+
+.badge-other {
+    background-color: var(--cat-other-bg);
+    color: var(--cat-other);
+    border: 1px solid var(--cat-other-border);
+}
+
+.td-amount {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+/* Restrained Delete Button */
+.delete-button {
+    background: transparent;
+    color: #9BA49F;
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.delete-button:hover {
+    background-color: var(--danger-subtle);
+    color: var(--danger);
+    border-color: var(--danger-border);
+}
+
+/* Empty State */
+#emptyMessage {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 36px 16px;
+    font-size: 14px;
+}
+
+/* 8. Responsive Layout */
+@media (max-width: 900px) {
+    .analytics-container {
+        gap: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 24px 16px;
+    }
+
+    .form-section,
+    .expenses-section,
+    .summary-card,
+    .analytics-card {
+        padding: 20px;
+    }
+
+    .analytics-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .legend-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #expenseForm {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        width: 100%;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+    .table-heading {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .table-heading select {
+        width: 100%;
+    }
+}
